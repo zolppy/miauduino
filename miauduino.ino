@@ -1,7 +1,8 @@
 #include <HX711.h> // Modulo conversor e amplificador de sinais para celulas de carga
 #include <Servo.h> // Servo motor
-// Com macros de pre-processamentos, nao eh necessario alocar espaco na memoria, diferentemente de constantes
-// O compilador apenas substitui a macro pelo seu valor, durante o pre-processamento
+/* Com macroinstrucoes de pre-processamento, nao eh necessario armazenar dados na memoria do
+computador, diferentemente de constantes; o compilador apenas substitui a macro pelo seu
+valor, durante o pre-processamento */
 #define CALIBRATION_FACTOR xxxx
 #define MIN_WEIGHT xxxx // Nao eh 0, pois o peso da propria tigela vazia tambem sera computado
 #define DOUT_PIN xxxx

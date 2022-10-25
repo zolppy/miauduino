@@ -17,6 +17,8 @@ void setup(void) {
   // LOW: ligado
   // HIGH: desligado
   
+  Serial.begin(9600); // Inicializa a comunicacao serial em 9600bps
+  
   // Define pinos de saida para o rele
   pinMode(RELAY_PIN1, OUTPUT);
   pinMode(RELAY_PIN2, OUTPUT);
@@ -28,8 +30,6 @@ void setup(void) {
   digitalWrite(RELAY_PIN2, HIGH);
   digitalWrite(RELAY_PIN3, HIGH);
   digitalWrite(RELAY_PIN4, HIGH);
-  
-  Serial.begin(9600); // Inicializa a comunicacao serial em 9600bps
   
   load_cell.begin(DOUT_PIN, SCK_PIN);
   load_cell.set_scale();

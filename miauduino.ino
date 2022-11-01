@@ -1,63 +1,68 @@
-#include <HX711.h> // Modulo conversor e amplificador de sinais para celulas de carga
+#include <HX711.h> // Modulo conversor e amplificador de sinais para balancas
 
-// Macros (macroinstrucoes) nao precisam armazenar valores na memoria
 #define CALIBRATION_FACTOR xxxx
-#define SCALE_DOUT_PIN xxxx
-#define SCALE_SCK_PIN xxxx
+#define BALANCE_DOUT_PIN xxxx
+#define BALANCE_SCK_PIN xxxx
 #define RELAY_DOUT_PIN xxxx
 #define RELAY_SCK_PIN xxxx
 #define MIN_MASS xxxx
-#define MAX_MASS xxxx
+#define ACCETABLE_WEIGHT xxxx
+#define BPS 9600
 
-HX711 scale;
+HX711 balance;
 
-float mass;
+float weight;
 
 void setup(void) {
-  Serial.begin(9600); // Inicializa a comunicacao serial em 9600bps
+  Serial.begin(BPS);
   
-  // Configurando pinos de saida para o rele
+  // Configura pinos de saida para o rele
   pinMode(RELAY_DOUT_PIN, OUTPUT);
   pinMode(RELAY_SCK_PIN, OUTPUT);
   
-  // Rele inicia desligado
+  // Desliga rele
   digitalWrite(RELAY_DOUT_PIN, HIGH);
   digitalWrite(RELAY_SCK_PIN, HIGH);
   
-  scale.begin(SCALE_DOUT_PIN, SCALE_SCK_PIN); // Configura pinos da celula de carga
-  //scale.power_up(); // Liga sensor
+  // Configura pinos da balanca
+  balance.begin(SCALE_DOUT_PIN, SCALE_SCK_PIN);
 
   // Saida de dados no monitor serial
-  Serial.println(); // Pula uma linha
-  Serial.println("HX711 - Calibracao da celula de carga");
-  Serial.println("Remova a massa da celula de carga");
-  Serial.println("Depois que as leituras comecarem, coloque um massa conhecido sobre a celula de carga");
+  Serial.println();
+  Serial.println("HX711 - Calibracao da balanca");
+  Serial.println("Remova o objeto da balanca");
+  Serial.println("Depois que as leituras comecarem, coloque um objeto conhecido sobre a balanca");
 
-  scale.set_scale(); // Limpa valor da celula de carga
-  zero_scale(); // Zera para desconsiderar massa da estrutura
+  balance.set_scale(); // Limpa valor da balanca
+  zero_scale(); // Zera para desconsiderar peso da estrutura
 }
 
 void zero_scale(void) {
-  Serial.println(); // Pula uma linha
-  balanca.tare(); // Zera a celula de carga
-  Serial.println("Celula de carga, zerada ");  
+  Serial.println();
+  balance.tare(); // Zera a balanca
+  Serial.println("balanca zerada ");  
 }
 
 void loop(void) {
-  scale.set_scale(CALIBRATION_FACTOR); // Ajusta fator de calibracao
+  balance.set_scale(CALIBRATION_FACTOR); // Ajusta fator de calibracao
 
   // Saida de dados no monitor serial
-  Serial.print("Massa: ");
-  Serial.print(balanca.get_units(), 3); // Imprime peso da celula de carga com 3 casas decimais
+  Serial.print("Peso: ");
+  Serial.print(scale.get_units(), 3); // Imprime peso da balanca com 3 casas decimais
   Serial.print(" kg");
   Serial.print("      Fator de calibracao: ");
   Serial.println(CALIBRATION_FACTOR);
   delay(500); // Em ms (1000 ms == 1 s)
-  
-  if(mass == MIN_MASS) {
+
+
+  if(weight == MIN_MASS) {
     // Rele ativa tensao para ligar motor espiral de liberacao de racao
-    digitalWrite(RELAY_DOUT_PIN, LOW);
+    while(weight < ACCETABLE_WEIGHT) {
+      // Liga rele
+      digitalWrite(RELAY_DOUT_PIN, LOW);
+    }
+
+    // Desliga rele
+    digitalWrite(RELAY_DOUT_PIN, HIGH)
   }
-  
-  delay(xxxx);
 }

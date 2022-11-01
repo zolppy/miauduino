@@ -47,11 +47,11 @@ void loop(void) {
   Serial.println(CALIBRATION_FACTOR);
   delay(500);
 
-    while(weight < ACCETABLE_WEIGHT) {
-      // Liga rele
-      digitalWrite(RELAY_DOUT_PIN, LOW);
-    }
+  while(weight < ACCETABLE_WEIGHT) {
+    // Liga rele
+    digitalWrite(RELAY_DOUT_PIN, LOW);
+  }
 
-    // Desliga rele
-    digitalWrite(RELAY_DOUT_PIN, HIGH)
+  // Desliga rele
+  digitalWrite(RELAY_DOUT_PIN, HIGH)
 }

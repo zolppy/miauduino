@@ -48,7 +48,7 @@ void loop(void) {
 
   // Saida de dados no monitor serial
   Serial.print("Peso: ");
-  Serial.print(scale.get_units(), 3); // Imprime peso da balanca com 3 casas decimais
+  Serial.print(balance.get_units(), 3); // Imprime peso da balanca com 3 casas decimais
   Serial.print(" kg");
   Serial.print("      Fator de calibracao: ");
   Serial.println(CALIBRATION_FACTOR);

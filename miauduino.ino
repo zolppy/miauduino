@@ -52,11 +52,8 @@ void loop(void) {
   Serial.print(" kg");
   Serial.print("      Fator de calibracao: ");
   Serial.println(CALIBRATION_FACTOR);
-  delay(500); // Em ms (1000 ms == 1 s)
+  delay(500);
 
-
-  if(weight == MIN_MASS) {
-    // Rele ativa tensao para ligar motor espiral de liberacao de racao
     while(weight < ACCETABLE_WEIGHT) {
       // Liga rele
       digitalWrite(RELAY_DOUT_PIN, LOW);
@@ -64,5 +61,4 @@ void loop(void) {
 
     // Desliga rele
     digitalWrite(RELAY_DOUT_PIN, HIGH)
-  }
 }

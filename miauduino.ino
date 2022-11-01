@@ -1,54 +1,47 @@
-#include <HX711.h> // Modulo conversor e amplificador de sinais para balancas
+#include <HX711.h> // Modulo da balanca
 
-#define CALIBRATION_FACTOR xxxx
-#define BALANCE_DOUT_PIN xxxx
-#define BALANCE_SCK_PIN xxxx
-#define RELAY_DOUT_PIN xxxx
-#define RELAY_SCK_PIN xxxx
-#define MIN_MASS xxxx
-#define ACCETABLE_WEIGHT xxxx
-#define BPS 9600
+const int BPS = 9600;
+const float MIN_WEIGHT = xxxx;
+const float ACCETABLE_WEIGHT = xxxx;
+const float CALIBRATION_FACTOR = xxxx;
 
-HX711 balance;
+// Pinos
+const char[] RELAY_DOUT_PIN = "xxxx";
+const char[] SCALE_SCK_PIN = "xxxx";
+const char[] SCALE_DOUT_PIN = "xxxx";
 
 float weight;
+HX711 scale;
 
 void setup(void) {
   Serial.begin(BPS);
   
-  // Configura pinos de saida para o rele
+  // Configura pino do rele
   pinMode(RELAY_DOUT_PIN, OUTPUT);
-  pinMode(RELAY_SCK_PIN, OUTPUT);
-  
-  // Desliga rele
-  digitalWrite(RELAY_DOUT_PIN, HIGH);
-  digitalWrite(RELAY_SCK_PIN, HIGH);
   
   // Configura pinos da balanca
-  balance.begin(SCALE_DOUT_PIN, SCALE_SCK_PIN);
+  scale.begin(SCALE_DOUT_PIN, SCALE_SCK_PIN);
 
-  // Saida de dados no monitor serial
   Serial.println();
   Serial.println("HX711 - Calibracao da balanca");
-  Serial.println("Remova o objeto da balanca");
+  Serial.println("Remova objetos da balanca");
   Serial.println("Depois que as leituras comecarem, coloque um objeto conhecido sobre a balanca");
 
-  balance.set_scale(); // Limpa valor da balanca
+  scale.set_scale(); // Define o valor padrao
   zero_scale(); // Zera para desconsiderar peso da estrutura
 }
 
 void zero_scale(void) {
   Serial.println();
-  balance.tare(); // Zera a balanca
-  Serial.println("balanca zerada ");  
+  scale.tare(); // Zera a balanca
+  Serial.println("Balanca zerada ");  
 }
 
 void loop(void) {
-  balance.set_scale(CALIBRATION_FACTOR); // Ajusta fator de calibracao
+  scale.set_scale(CALIBRATION_FACTOR); // Ajusta fator de calibracao
 
-  // Saida de dados no monitor serial
   Serial.print("Peso: ");
-  Serial.print(balance.get_units(), 3); // Imprime peso da balanca com 3 casas decimais
+  Serial.print(scale.get_units(), 3); // Imprime peso da balanca com 3 casas decimais
   Serial.print(" kg");
   Serial.print("      Fator de calibracao: ");
   Serial.println(CALIBRATION_FACTOR);

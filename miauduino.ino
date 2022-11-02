@@ -1,16 +1,14 @@
 #include <HX711.h> // Modulo da balanca
 
 const int BPS = 9600;
-const float MIN_WEIGHT = xxxx;
-const float ACCETABLE_WEIGHT = xxxx;
-const float CALIBRATION_FACTOR = xxxx;
+const int SECOND = 1000;
+const float MIN_WEIGHT = 0.320;
 
 // Pinos
-const char[] RELAY_DOUT_PIN = "xxxx";
-const char[] SCALE_SCK_PIN = "xxxx";
-const char[] SCALE_DOUT_PIN = "xxxx";
+const char[] RELAY_DOUT_PIN = "A1";
+const char[] SCALE_SCK_PIN = "A2";
+const char[] SCALE_DOUT_PIN = "A3";
 
-float weight;
 HX711 scale;
 
 void setup(void) {
@@ -38,20 +36,29 @@ void zero_scale(void) {
 }
 
 void loop(void) {
+  float weight = 0;
+  const float ACCEPTABLE_WEIGHT = 1.500;
+  const float CALIBRATION_FACTOR = 24560;
+
   scale.set_scale(CALIBRATION_FACTOR); // Ajusta fator de calibracao
 
+  Serial.println();
   Serial.print("Peso: ");
   Serial.print(scale.get_units(), 3); // Imprime peso da balanca com 3 casas decimais
   Serial.print(" kg");
   Serial.print("      Fator de calibracao: ");
   Serial.println(CALIBRATION_FACTOR);
-  delay(500);
+  delay(0.5 * SECOND);
 
-  while(weight < ACCETABLE_WEIGHT) {
+  while(weight < ACCEPTABLE_WEIGHT) {
     // Liga rele
     digitalWrite(RELAY_DOUT_PIN, LOW);
+
+    delay(1 * SECOND);
+
+    weight = get_units();
   }
 
   // Desliga rele
-  digitalWrite(RELAY_DOUT_PIN, HIGH)
+  digitalWrite(RELAY_DOUT_PIN, HIGH);
 }

@@ -1,13 +1,14 @@
 #include <HX711.h> // Modulo da balanca
+#include <string>
 
 const int BPS = 9600;
 const int SECOND = 1000;
 const float MIN_WEIGHT = 0.320;
 
 // Pinos
-const char[] RELAY_DOUT_PIN = "A1";
-const char[] SCALE_SCK_PIN = "A2";
-const char[] SCALE_DOUT_PIN = "A3";
+const string RELAY_DOUT_PIN("A1");
+const string SCALE_SCK_PIN("A2");
+const string SCALE_DOUT_PIN("A3");
 
 HX711 scale;
 
@@ -50,15 +51,19 @@ void loop(void) {
   Serial.println(CALIBRATION_FACTOR);
   delay(0.5 * SECOND);
 
+  /*
+    ** Para rele **
+      LOW - Liga
+      HIGH - Desliga
+  */
+
   while(weight < ACCEPTABLE_WEIGHT) {
-    // Liga rele
     digitalWrite(RELAY_DOUT_PIN, LOW);
 
-    delay(1 * SECOND);
+    delay(0.5 * SECOND);
 
     weight = get_units();
   }
 
-  // Desliga rele
   digitalWrite(RELAY_DOUT_PIN, HIGH);
 }

@@ -6,19 +6,23 @@ const int SECOND = 1000;
 const float MIN_WEIGHT = 0.320;
 
 // Pinos
-const string RELAY_DOUT_PIN("A1");
-const string SCALE_SCK_PIN("A2");
-const string SCALE_DOUT_PIN("A3");
+const string RELAY_PIN_1("A1");
+const string RELAY_PIN_2("A2");
+const string SCALE_SCK_PIN("A3");
+const string SCALE_DOUT_PIN("A4");
+
+float weight;
+const float ACCEPTABLE_WEIGHT = 1.500;
+const float CALIBRATION_FACTOR = 24560;
 
 HX711 scale;
 
 void setup(void) {
   Serial.begin(BPS);
   
-  // Configura pino do rele
-  pinMode(RELAY_DOUT_PIN, OUTPUT);
-  
-  // Configura pinos da balanca
+  // Configuracao de pinos
+  pinMode(RELAY_PIN_1, OUTPUT);
+  pinMode(RELAY_PIN_2, OUTPUT);
   scale.begin(SCALE_DOUT_PIN, SCALE_SCK_PIN);
 
   Serial.println();
@@ -37,10 +41,6 @@ void zero_scale(void) {
 }
 
 void loop(void) {
-  float weight = 0;
-  const float ACCEPTABLE_WEIGHT = 1.500;
-  const float CALIBRATION_FACTOR = 24560;
-
   scale.set_scale(CALIBRATION_FACTOR); // Ajusta fator de calibracao
 
   Serial.println();
@@ -51,19 +51,17 @@ void loop(void) {
   Serial.println(CALIBRATION_FACTOR);
   delay(0.5 * SECOND);
 
-  /*
-    ** Para rele **
-      LOW - Liga
-      HIGH - Desliga
-  */
+  weight = 0;
 
   while(weight < ACCEPTABLE_WEIGHT) {
-    digitalWrite(RELAY_DOUT_PIN, LOW);
+    digitalWrite(RELAY_PIN_1, LOW);
+    digitalWrite(RELAY_PIN_2, HIGH);
 
     delay(0.5 * SECOND);
 
     weight = get_units();
   }
 
-  digitalWrite(RELAY_DOUT_PIN, HIGH);
+  digitalWrite(RELAY_PIN_1, HIGH);
+  digitalWrite(RELAY_PIN_2, LOW);
 }

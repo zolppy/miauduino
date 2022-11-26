@@ -10,16 +10,23 @@ const int RELAY_PIN = 1;
 const int SCALE_SCK_PIN = 2;
 const int SCALE_DOUT_PIN = 3;
 
-float weight;
 const float ACCEPTABLE_WEIGHT = 1.500;
-const float CALIBRATION_FACTOR = 24560;
 
 HX711 scale;
+float weight;
+int calibration_factor;
 
-void setup(void) {
+void setup(void) { 
+  if(EEPROM[0] != 1) {
+    EEPROM[0] = 1;
+    EEPROM[1] = 1234567;
+  };
+
+  calibration_factor = EEPROM[1];
+
   Serial.begin(BPS);
-  scale.set_scale(CALIBRATION_FACTOR); // Ajusta fator de calibracao
-  
+  scale.set_scale(calibration_factor); // Ajusta fator de calibracao
+
   // Configuracao de pinos
   pinMode(RELAY_PIN, OUTPUT);
   scale.begin(SCALE_DOUT_PIN, SCALE_SCK_PIN);

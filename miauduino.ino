@@ -1,15 +1,15 @@
 #include <HX711.h>
 #include <EEPROM.h>
 
-const int BPS = 9600;
-const int SECOND = 1000;
-const float MIN_WEIGHT = 0.123;
-const float ACCEPTABLE_WEIGHT = 1.234;
+#define BPS 9600
+#define SECOND 1000
+#define MIN_WEIGHT 0.123
+#define ACCEPTABLE_WEIGHT 1.234
+#define CALIBRATION_FACTOR 1234567
 
-// Pinos
-const int RELAY_PIN = 1;
-const int SCALE_SCK_PIN = 2;
-const int SCALE_DOUT_PIN = 3;
+#define RELAY_PIN 1
+#define SCALE_SCK_PIN 2
+#define SCALE_DOUT_PIN 3
 
 HX711 scale;
 float weight;
@@ -18,7 +18,7 @@ int calibration_factor;
 void setup(void) { 
   if(EEPROM[0] != 1) {
     EEPROM[0] = 1;
-    EEPROM[1] = 1234567;
+    EEPROM[1] = CALIBRATION_FACTOR;
   }
 
   calibration_factor = EEPROM[1];

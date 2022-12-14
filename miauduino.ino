@@ -91,6 +91,5 @@ void loop() {
       digitalWrite(REL, HIGH);
       delay(3000);
     }
-    
   }
 }

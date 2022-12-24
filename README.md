@@ -1,4 +1,6 @@
 # Miauduino
+
+### Descrição
 Sistema de arduino para automação da alimentação dos gatos que residem no Instituto Federal da Bahia.
 
 ## Colaboradores
@@ -27,5 +29,5 @@ Sistema de arduino para automação da alimentação dos gatos que residem no In
 * Henrique Sampario Araujo
 * Lucas Lima Matos
 
-###
+### aaa
 * José Gustavo da Silva Souza

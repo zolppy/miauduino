@@ -18,10 +18,10 @@ Sistema de arduino para automação da alimentação dos gatos que residem no In
 * Henrique Santos Silva
 * Lincoln de Santana Lopes
 
-### aaa
+### Gerente de projeto
 * Veronyca Kezya Santos Sousa Patriota
 
-### aaa
+### Líder de projeto e projetista
 * Gildevan Santos de Araujo
 
 ### Redatoras
@@ -29,9 +29,9 @@ Sistema de arduino para automação da alimentação dos gatos que residem no In
 * Mirele Oliveira da Silva
 * Naiane Silva Leite dos Santos
 
-### Videomakers
+### Videomakers e divulgadores
 * Henrique Sampario Araujo
 * Lucas Lima Matos
 
-### aaa
+### Orçamento e aquisições
 * José Gustavo da Silva Souza

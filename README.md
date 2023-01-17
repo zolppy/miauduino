@@ -21,7 +21,7 @@ Sistema de arduino para automação da alimentação dos gatos que residem no In
 ### Gerente de projeto
 * Veronyca Kezya Santos Sousa Patriota
 
-### Líder de projeto e projetista
+### Líder de projeto e projetor da estrutura
 * Gildevan Santos de Araujo
 
 ### Redatoras

@@ -1,37 +1,51 @@
-# Miauduino
+<h1>Miauduino</h1>
 
 ![logo](https://user-images.githubusercontent.com/94535032/209439870-f39dca56-8d37-4890-a91c-1d2658787972.jpeg)
 
 ![structure](https://user-images.githubusercontent.com/94535032/209440230-1246bf03-2b33-421f-845b-3e8d4f981653.jpeg)
 
-### Descrição
+<h2>Descrição</h2>
 Sistema de arduino para automação da alimentação dos gatos que residem no Instituto Federal da Bahia.
 
-## Colaboradores
+<h2>Contribuintes</h2>
 
-### Designers
-* Andressa Mota da Silva Santos
-* Carlos Eduardo de Souza
+<h3>Designers</h3>
+<ul>
+  <li>Andressa Mota da Silva Santos</li>
+  <li>Carlos Eduardo de Souza</li>
+</ul>
 
-### Programadores
-* Gabriel Cavalcante de Jesus Oliveira
-* Henrique Santos Silva
-* Lincoln de Santana Lopes
+<h3>Programadores</h3>
+<ul>
+  <li>Gabriel Cavalcante de Jesus Oliveira</li>
+  <li>Henrique Santos Silva</li>
+  <li>Lincoln de Santana Lopes</li>
+</ul>
 
-### Gerente de projeto
-* Veronyca Kezya Santos Sousa Patriota
+<h3>Gerente de projeto</h3>
+<ul>
+  <li>Veronyca Kezya Santos Sousa Patriota</li>
+</ul>
 
-### Líder de projeto e projetor da estrutura
-* Gildevan Santos de Araujo
+<h3>Líder de projeto e projetor da estrutura</h3>
+<ul>
+  <li>Gildevan Santos de Araujo</li>
+</ul>
 
-### Redatoras
-* Fabiana Pereira Oliveira
-* Mirele Oliveira da Silva
-* Naiane Silva Leite dos Santos
+<h3>Redatoras</h3>
+<ul>
+  <li>Fabiana Pereira Oliveira</li>
+  <li>Mirele Oliveira da Silva</li>
+  <li>Naiane Silva Leite dos Santos</li>
+</ul>
 
-### Videomakers e divulgadores
-* Henrique Sampario Araujo
-* Lucas Lima Matos
+<h3>Videomakers e divulgadores</h3>
+<ul>
+  <li>Henrique Sampario Araujo</li>
+  <li>Lucas Lima Matos</li>
+</ul>
 
-### Orçamento e aquisições
-* José Gustavo da Silva Souza
+<h3>Orçamento e aquisições</h3>
+<ul>
+  <li>José Gustavo da Silva Souza</li>
+</ul>

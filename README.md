@@ -4,7 +4,7 @@
 <img src="https://github.com/zolppy/miauduino/blob/main/images/structure.jpeg" alt="Estrutura do Miauduino" width="500px" />
 
 ## Descrição
-Sistema para comedouro de gatos do IFBA de Jacobina.
+Sistema para comedouro de gatos do <a href="https://portal.ifba.edu.br/jacobina">IFBA de Jacobina</a>.
 
 ## Contribuintes
 

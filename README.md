@@ -1,7 +1,7 @@
 # Miauduino
 
-<img src="https://github.com/zolppy/miauduino/blob/main/imagens/logo.jpeg" alt="Logo do Miauduino" width="300px" />
-<img src="https://github.com/zolppy/miauduino/blob/main/imagens/structure.jpeg" alt="Estrutura do Miauduino" />
+<img src="https://github.com/zolppy/miauduino/blob/main/images/logo.jpeg" alt="Logo do Miauduino" width="300px" />
+<img src="https://github.com/zolppy/miauduino/blob/main/images/structure.jpeg" alt="Estrutura do Miauduino" />
 
 ## Descrição
 Sistema de arduino para automação da alimentação dos gatos que residem no Instituto Federal da Bahia.

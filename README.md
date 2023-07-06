@@ -4,7 +4,7 @@
 <img src="https://github.com/zolppy/miauduino/blob/main/images/structure.jpeg" alt="Estrutura do Miauduino" width="500px" />
 
 ## Descrição
-Sistema de arduino para automação da alimentação dos gatos que residem no Instituto Federal da Bahia.
+Sistema para comedouro de gatos do IFBA de Jacobina.
 
 ## Contribuintes
 
